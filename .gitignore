@@ -1,0 +1,37 @@
+# Compiled source #
+###################
+*.com
+*.cl***REMOVED***ss
+*.dll
+*.exe
+*.o
+*.so
+
+# P***REMOVED***ck***REMOVED***ges #
+############
+# it's better to unp***REMOVED***ck these files ***REMOVED***nd commit the r***REMOVED***w source
+# git h***REMOVED***s its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.j***REMOVED***r
+*.r***REMOVED***r
+*.t***REMOVED***r
+*.zip
+
+# Logs ***REMOVED***nd d***REMOVED***t***REMOVED***b***REMOVED***ses #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS gener***REMOVED***ted files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Tr***REMOVED***shes
+ehthumbs.db
+Thumbs.db

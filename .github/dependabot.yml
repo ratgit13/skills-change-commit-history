@@ -1,0 +1,6 @@
+version: 2
+upd***REMOVED***tes:
+  - p***REMOVED***ck***REMOVED***ge-ecosystem: "github-***REMOVED***ctions"
+    directory: "/"
+    schedule:
+      interv***REMOVED***l: "monthly"

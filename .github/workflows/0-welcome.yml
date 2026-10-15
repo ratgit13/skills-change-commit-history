@@ -1,0 +1,72 @@
+n***REMOVED***me: Step 0, Welcome
+
+# This step triggers ***REMOVED***fter the le***REMOVED***rner cre***REMOVED***tes ***REMOVED*** new repository from the templ***REMOVED***te.
+# This workflow upd***REMOVED***tes from step 0 to step 1.
+
+# This will run every time we cre***REMOVED***te push ***REMOVED*** commit to `m***REMOVED***in`.
+# Reference: https://docs.github.com/en/***REMOVED***ctions/le***REMOVED***rn-github-***REMOVED***ctions/events-th***REMOVED***t-trigger-workflows
+on:
+  workflow_disp***REMOVED***tch:
+  push:
+    br***REMOVED***nches:
+      - m***REMOVED***in
+
+# Reference: https://docs.github.com/en/***REMOVED***ctions/security-guides/***REMOVED***utom***REMOVED***tic-token-***REMOVED***uthentic***REMOVED***tion
+permissions:
+  # Need `contents: re***REMOVED***d` to checkout the repository.
+  # Need `contents: write` to upd***REMOVED***te the step met***REMOVED***d***REMOVED***t***REMOVED***.
+  contents: write
+
+jobs:
+  # Get the current step to only run the m***REMOVED***in job when the le***REMOVED***rner is on the s***REMOVED***me step.
+  get_current_step:
+    n***REMOVED***me: Check current step number
+    runs-on: ubuntu-l***REMOVED***test
+    steps:
+      - n***REMOVED***me: Checkout
+        uses: ***REMOVED***ctions/checkout@v4
+      - id: get_step
+        run: |
+          echo "current_step=$(c***REMOVED***t ./.github/steps/-step.txt)" >> $GITHUB_OUTPUT
+    outputs:
+      current_step: ${{ steps.get_step.outputs.current_step }}
+
+  on_st***REMOVED***rt:
+    n***REMOVED***me: On st***REMOVED***rt
+    needs: get_current_step
+
+    # We will only run this ***REMOVED***ction when:
+    # 1. This repository isn't the templ***REMOVED***te repository.
+    # 2. The step is currently 0.
+    # Reference: https://docs.github.com/en/***REMOVED***ctions/le***REMOVED***rn-github-***REMOVED***ctions/contexts
+    # Reference: https://docs.github.com/en/***REMOVED***ctions/le***REMOVED***rn-github-***REMOVED***ctions/expressions
+    if: >-
+      ${{ !github.event.repository.is_templ***REMOVED***te
+          && needs.get_current_step.outputs.current_step == 0 }}
+
+    # We'll run Ubuntu for perform***REMOVED***nce inste***REMOVED***d of M***REMOVED***c or Windows.
+    runs-on: ubuntu-l***REMOVED***test
+
+    steps:
+      # We'll need to check out the repository so th***REMOVED***t we c***REMOVED***n edit the README.
+      - n***REMOVED***me: Checkout
+        uses: ***REMOVED***ctions/checkout@v4
+        with:
+          fetch-depth: 0 # Let's get ***REMOVED***ll the br***REMOVED***nches.
+
+      - n***REMOVED***me: Cre***REMOVED***te ***REMOVED*** commit with ***REMOVED*** .env file
+        run: |
+          git config --glob***REMOVED***l user.em***REMOVED***il "github-***REMOVED***ctions[bot]@users.noreply.github.com"
+          git config --glob***REMOVED***l user.n***REMOVED***me "github-***REMOVED***ctions[bot]"
+          echo "SOME_SECURE_TOKEN=***REMOVED***bc123" >> .env
+          git ***REMOVED***dd .env
+          git commit -m "Add .env file"
+          git push
+
+      # In README.md, switch step 0 for step 1.
+      - n***REMOVED***me: Upd***REMOVED***te to step 1
+        uses: skills/***REMOVED***ction-upd***REMOVED***te-step@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          from_step: 0
+          to_step: 1
