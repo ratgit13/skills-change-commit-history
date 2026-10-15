@@ -16,48 +16,45 @@ Accident***REMOVED***l commits c***REMOVED***n be tricky to remove with Git. In 
 </he***REMOVED***der>
 
 <!--
-  <<< Author notes: Course st***REMOVED***rt >>>
-  Include st***REMOVED***rt button, ***REMOVED*** note ***REMOVED***bout Actions minutes,
-  ***REMOVED***nd tell the le***REMOVED***rner why they should t***REMOVED***ke the course.
+  <<< Author notes: Step 1 >>>
+  Choose 3-5 steps for your course.
+  The first step is ***REMOVED***lw***REMOVED***ys the h***REMOVED***rdest, so pick something e***REMOVED***sy!
+  Link to docs.github.com for further expl***REMOVED***n***REMOVED***tions.
+  Encour***REMOVED***ge users to open new t***REMOVED***bs for steps!
 -->
 
-## Welcome
+## Step 1: Removing sensitive d***REMOVED***t***REMOVED***
 
-A trustworthy commit history is the b***REMOVED***ckbone of version control with Git. As ***REMOVED*** result, ***REMOVED***ltering commit history is difficult by design. Sometimes, the history needs to be ***REMOVED***ltered to remove credenti***REMOVED***ls or other sensitive d***REMOVED***t***REMOVED*** th***REMOVED***t is mist***REMOVED***kenly checked in. In this course, we'll le***REMOVED***rn how to remove content from repository's complete history ***REMOVED***nd ***REMOVED***pply best pr***REMOVED***ctices for preventing ***REMOVED***ccident***REMOVED***l commits in the future.
+_Welcome to "Ch***REMOVED***nge commit history"! :w***REMOVED***ve:_
 
-- **Who is this for**: Intermedi***REMOVED***te users of Git, org***REMOVED***niz***REMOVED***tions
-- **Wh***REMOVED***t you'll le***REMOVED***rn**: How to remove ***REMOVED*** file from Git's entire history
-- **Wh***REMOVED***t you'll build**: You'll m***REMOVED***nipul***REMOVED***te the history of ***REMOVED*** Git repository
-- **Prerequisites**: We recommend you clone this repository to your m***REMOVED***chine ***REMOVED***nd use the comm***REMOVED***nd line to follow ***REMOVED***long. You'll ***REMOVED***lso need to inst***REMOVED***ll BFG Repo-Cle***REMOVED***ner, but the steps will be covered in the course.
-- **How long**: This course t***REMOVED***kes less th***REMOVED***n 1 hour to complete.
+We'll st***REMOVED***rt by working with `.env` files. These files usu***REMOVED***lly cont***REMOVED***in sensitive content. For this course, we'll work on removing th***REMOVED***t file ***REMOVED***nd ***REMOVED***ll tr***REMOVED***ces in the Git history. The first step is to remove the file from repository. We'll ***REMOVED***lter the history l***REMOVED***ter.
 
-In this course, you will:
+We'll ***REMOVED***ssume you're using the comm***REMOVED***nd line, but you c***REMOVED***n complete the course using your preferred tooling.
 
-1. Remove content from the root directory of ***REMOVED*** repository
-2. Use BFG Repo-Cle***REMOVED***ner to remove content from repository history
-3. Avoid future ***REMOVED***ccident***REMOVED***l commits by ***REMOVED***dding ***REMOVED*** p***REMOVED***ttern to `.gitignore`
+**Wh***REMOVED***t is _sensitive content_?** Sensitive content is ***REMOVED***nything th***REMOVED***t is checked into your repository history th***REMOVED***t m***REMOVED***y put you or your org***REMOVED***niz***REMOVED***tion ***REMOVED***t risk. This content usu***REMOVED***lly comes in the form of credenti***REMOVED***ls (i.e., p***REMOVED***sswords, ***REMOVED***ccess keys). The best pr***REMOVED***ctice for ***REMOVED***ccident***REMOVED***lly exposed sensitive content is to inv***REMOVED***lid***REMOVED***te it (i.e., revoke ***REMOVED*** person***REMOVED***l ***REMOVED***ccess token), completely remove it from ***REMOVED***ll repository copies, ***REMOVED***nd t***REMOVED***ke me***REMOVED***sures to prevent future exposure.
 
-### How to st***REMOVED***rt this course
+See [Deleting ***REMOVED*** file on GitHub Docs](https://docs.github.com/en/repositories/working-with-files/m***REMOVED***n***REMOVED***ging-files/deleting-files-in-***REMOVED***-repository#deleting-***REMOVED***-file) if you need ***REMOVED***ddition***REMOVED***l help removing ***REMOVED*** file.
 
-<!-- For st***REMOVED***rt course, run in J***REMOVED***v***REMOVED***Script:
-'https://github.com/new?' + new URLSe***REMOVED***rchP***REMOVED***r***REMOVED***ms({
-  templ***REMOVED***te_owner: 'skills',
-  templ***REMOVED***te_n***REMOVED***me: 'ch***REMOVED***nge-commit-history',
-  owner: '@me',
-  n***REMOVED***me: 'skills-ch***REMOVED***nge-commit-history',
-  description: 'My copy of the skills course on ch***REMOVED***nging commit history',
-  visibility: 'public',
-}).toString()
--->
+### :keybo***REMOVED***rd: Activity: Remove `.env` in the project root directory
 
-[![st***REMOVED***rt-course](https://user-im***REMOVED***ges.githubusercontent.com/1221423/235727646-4***REMOVED***590299-ffe5-480d-8cd5-8194e***REMOVED***184546.svg)](https://github.com/new?templ***REMOVED***te_owner=skills&templ***REMOVED***te_n***REMOVED***me=ch***REMOVED***nge-commit-history&owner=%40me&n***REMOVED***me=skills-ch***REMOVED***nge-commit-history&description=My+copy+of+the+skills+course+on+ch***REMOVED***nging+commit+history&visibility=public)
-
-1. Right-click **St***REMOVED***rt course** ***REMOVED***nd open the link in ***REMOVED*** new t***REMOVED***b.
-2. In the new t***REMOVED***b, most of the prompts will ***REMOVED***utom***REMOVED***tic***REMOVED***lly fill in for you.
-   - For owner, choose your person***REMOVED***l ***REMOVED***ccount or ***REMOVED***n org***REMOVED***niz***REMOVED***tion to host the repository.
-   - We recommend cre***REMOVED***ting ***REMOVED*** public repository, ***REMOVED***s priv***REMOVED***te repositories will [use Actions minutes](https://docs.github.com/en/billing/m***REMOVED***n***REMOVED***ging-billing-for-github-***REMOVED***ctions/***REMOVED***bout-billing-for-github-***REMOVED***ctions).
-   - Scroll down ***REMOVED***nd click the **Cre***REMOVED***te repository** button ***REMOVED***t the bottom of the form.
-3. After your new repository is cre***REMOVED***ted, w***REMOVED***it ***REMOVED***bout 20 seconds, then refresh the p***REMOVED***ge. Follow the step-by-step instructions in the new repository's README.
+1. Open your termin***REMOVED***l of choice, clone this repository, ***REMOVED***nd switch to your repository directory.
+   ```shell
+   git clone <your-repository-url>
+   cd <your-repository-n***REMOVED***me>
+   ```
+2. Delete `.env` from the root directory.
+   ```shell
+   git rm .env
+   ```
+3. Commit the remov***REMOVED***l of `.env`.
+   ```shell
+   git commit -m "remove .env file"
+   ```
+4. Push the remov***REMOVED***l to GitHub:
+   ```shell
+   git push
+   ```
+5. W***REMOVED***it ***REMOVED***bout 20 seconds then refresh this p***REMOVED***ge (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/***REMOVED***ctions) will ***REMOVED***utom***REMOVED***tic***REMOVED***lly upd***REMOVED***te to the next step.
 
 <footer>
 
