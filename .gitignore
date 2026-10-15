@@ -1,37 +1,37 @@
 # Compiled source #
 ###################
 *.com
-*.cl***REMOVED***ss
+*.class
 *.dll
 *.exe
 *.o
 *.so
 
-# P***REMOVED***ck***REMOVED***ges #
+# Packages #
 ############
-# it's better to unp***REMOVED***ck these files ***REMOVED***nd commit the r***REMOVED***w source
-# git h***REMOVED***s its own built in compression methods
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
 *.7z
 *.dmg
 *.gz
 *.iso
-*.j***REMOVED***r
-*.r***REMOVED***r
-*.t***REMOVED***r
+*.jar
+*.rar
+*.tar
 *.zip
 
-# Logs ***REMOVED***nd d***REMOVED***t***REMOVED***b***REMOVED***ses #
+# Logs and databases #
 ######################
 *.log
 *.sql
 *.sqlite
 
-# OS gener***REMOVED***ted files #
+# OS generated files #
 ######################
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
-.Tr***REMOVED***shes
+.Trashes
 ehthumbs.db
 Thumbs.db
